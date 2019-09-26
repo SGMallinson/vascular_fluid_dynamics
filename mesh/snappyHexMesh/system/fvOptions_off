@@ -1,0 +1,40 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+#include "parameters"
+
+momentumSource
+{
+
+    type          momentumSource;
+    active        true;
+
+    momentumSourceCoeffs
+    {
+
+        fieldNames    (U);
+        selectionMode cellSet;
+        cellSet      injectionCells;
+
+        nLoc $nInjectionLocations; // number of injection locations
+        frequency frequency [0 0 -1 0 0 0 0] $firingFrequency; // injection frequency
+        area           area [0 2  0 0 0 0 0] $Ainj; // injector area
+        velocity   velocity [0 1 -1 0 0 0 0] (0 $dropletVelocity 0); // injection velocity
+        nuAir         nuAir [0 2 -1 0 0 0 0] $airKinematicViscosity; // air kinematic viscosity
+        particleDiameter dp [0 1  0 0 0 0 0] $mainDiameter; // injected particle diameter
+       
+}
+// ************************************************************************* //

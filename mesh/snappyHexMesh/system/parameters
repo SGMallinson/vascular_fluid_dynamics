@@ -1,0 +1,15 @@
+// units mm-ns-mW-K-A (NB: pressure unit kPa)
+// general
+Pi  #calc"Foam::constant::mathematical::pi";
+// bounding box im mm, from msmdir.013667
+xMin 12.874609;
+xMax 68.877693;
+yMin 20.295847;
+yMax 145.792175;
+zMin 17.332241;
+zMax 238.672165;
+// system parameters
+pInf 100.0; // kPa
+muB 1.0e-3; // kPa ms
+rhoB 1.0; // mg/uL
+nuB  #calc "$muB / $rhoB";
